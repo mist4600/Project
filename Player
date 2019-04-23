@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
-
 public class Player {
+
 	private boolean isHuman;
 	private Ship[] ships;
 	private Board ownBoard = new Board();
@@ -31,19 +31,27 @@ public class Player {
 		
 		for(int i=1; i<=7; i++) {
 			ownBoard.print();
+			System.out.println("Place this ship");
+			
 			System.out.println("Enter coordinates col row or -1 to rotate:");
 			int col = scnr.nextInt();
+			
 			//TODO think about rotating
 			int row = scnr.nextInt();
+			// if col > 14 && row > 9 return error 
 			Ship p = new Ship(); // TODO flesh out the details
 			boolean valid = this.ownBoard.placeShip(row, col, p);
 			// TODO deal with incorrect input
+			if (i == 7)
+				ownBoard.print();
 		}
 	}
 	private void compute() {
 		for(int i=1; i<=7; i++) {
 			int col = ran.nextInt(ownBoard.COLS);
+			//System.out.println(col);
 			int row = ran.nextInt(ownBoard.ROWS);
+			//System.out.println(row);
 			Ship p = new Ship();
 			boolean valid = this.ownBoard.placeShip(row, col, p);
 		}
@@ -51,9 +59,11 @@ public class Player {
 	
 	public void initBoard() {
 		System.out.println(name + " please set your pieces");
-		
+		//ownBoard.print();
+		//System.out.println("Place this ship");
+ 		
 		if(isHuman) {
-			System.out.println("Initianing board by thinking...");
+			//System.out.println("Initianing board by thinking...");
 			think();
 		}
 		else {
@@ -73,4 +83,7 @@ public class Player {
 		System.out.println(name + " is printing enemy board");
 		enemyBoard.print();
 	}
+	
+	
+	
 }

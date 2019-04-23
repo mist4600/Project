@@ -1,6 +1,6 @@
 import java.util.Random;
 public class Board {
-	
+
 	public final int ROWS = 10;
 	public final int COLS = 15;
 	private char[][] cells = new char[ROWS][COLS];
@@ -44,15 +44,24 @@ public class Board {
 	}
 	
 	public void print() {
-	System.out.println("Board is printing ....");
+	//System.out.println("Board is printing ....");
 	//TODO clean the printing, header row and col indices are needed
+		
+	for(int i = 0; i < 15; i++) {
+		System.out.print(" " + i + "  ");		
+	}
+	System.out.println(" ");
+	
 	for(int r = 0; r < ROWS; r++) {
-		System.out.print("|");
+		System.out.print(r);
+		System.out.print(" | ");
 		for(int c = 0; c < COLS; c++) {
-			System.out.print( cells[r][c] + "|");
+			System.out.print( cells[r][c] + " | ");
 		}
 		System.out.println();
 	}
 	}
-
+	
+	
+	
 }
